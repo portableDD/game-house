@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>game</title>
+    </head>
+    <body>
+
+        <div id="glo"></div>
+
+        <button id="myBtn">click me</button>
+        <button id="demo">no click me</button>
+        <button id="high">am the one to be clicked </button>
+        
+       
+    </body>
+    <script>
+        let computerscore= 0;
+        let playerscore= 0;
+        let round = 0
+
+        console.log("Hello, World!")
+        function computerPlay() {
+            let randomNum = Math.floor(Math.random() * Math.floor(3));
+            if(randomNum==0) {
+                return "rock"
+            } else if(randomNum==1) {
+                return "paper" 
+            } else {
+                return "scissors"
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+           
+            if (computerSelection == 'rock' && playerSelection == 'rock') {
+                return "it is a tie play again"                                                        
+            } else if (computerSelection == 'paper' && playerSelection == 'paper') {
+                return "it is a tie play again"                                                        
+            } else if (computerSelection == 'scissors' && playerSelection == 'scissors') {
+                return "it is a tie play again"                                                        
+            } else if(computerSelection == 'paper' && playerSelection == 'rock') {                                                                   
+                return "You lose! paper beats rock"                                                        
+            } else if (computerSelection == 'scissors' && playerSelection == 'paper') {                                                                                       
+                return  "You lose! scissors beats paper"                                                    
+            }else if (computerSelection == 'rock' && playerSelection == 'scissors') {                                                                                       
+                return  "You lose! rock beats scissors"                                                    
+            } else {
+                return 'You win'
+            }
+        }
+        
+        document.getElementById("myBtn").addEventListener("click", function(){
+            let playerSelection = "rock";
+            let computerSelection= computerPlay();
+            myunction(playerSelection, computerSelection);
+        });
+
+        document.getElementById("demo").addEventListener("click", function(){
+            let playerSelection = "paper";
+            let computerSelection= computerPlay();
+            myunction(playerSelection, computerSelection);
+        });
+
+        document.getElementById("high").addEventListener("click", function(){
+            let playerSelection = "scissors";
+            let computerSelection= computerPlay();
+            myunction(playerSelection, computerSelection);
+        });
+
+        function myunction(playerSelection, computerSelection) {
+            if (round === 5) {
+                return
+            }
+            round ++
+            let result = playRound(playerSelection, computerSelection);
+            document.getElementById("glo").innerHTML = result;
+            if (result.includes("tie")){
+            
+            } else if (result.includes("lose")) {
+                computerscore ++;
+            } else if (result.includes("win")) {
+                playerscore ++;
+            }
+            console.log(playerSelection);
+            console.log(computerSelection);
+            console.log(computerscore);
+            console.log(playerscore);
+            if (round === 5) {
+                if (playerscore > computerscore) {
+                    document.getElementById("glo").innerHTML = "You are the winner!!!!!";
+                } else if (playerscore < computerscore) {
+                    document.getElementById("glo").innerHTML = "Computer is the winner!!!!";
+                } else {
+                    document.getElementById("glo").innerHTML = "It is a draw";
+                }
+                
+                return;
+            }
+        }
+
+        //function game() {
+           // for(i=0; i<5; i++) {
+            //    let input= prompt("input either rock, paper, scissors?")
+              //  if (input == '') {
+                //    console.log('you can not input empty')
+                  //  return
+                //}
+                //console.log(playRound(input, computerPlay()))
+            //}
+        //}
+
+        //game();
+    </script>
+</html>
