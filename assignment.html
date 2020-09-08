@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>game</title>
+    </head>
+    <body>
+        
+    </body>
+        <script>
+            console.log("Hello, World!")
+function computerPlay() {
+    let randomNum = Math.floor(Math.random() * Math.floor(3));
+    if(randomNum==0) {
+        return "rock"
+    } else if(randomNum==1) {
+        return "paper" 
+    } else {
+        return "scissors"
+    }
+}
+
+function playRound(playerSelection, computerSelection) {
+    console.log(playerSelection)
+    console.log(computerSelection)
+    if (computerSelection == 'rock' && playerSelection == 'rock') {
+     return "it is a tie play again"                                                        
+     } else if(computerSelection == 'paper' && playerSelection == 'rock') {                                                                   
+          return "You lose! paper beats rock"                                                        
+     } else if (computerSelection == 'scissors' && playerSelection == 'paper') {                                                                                       
+           return  "You lose! scissors beats paper"                                                    
+     }else if (computerSelection == 'rock' && playerSelection == 'scissors') {                                                                                       
+           return  "You lose! rock beats scissors"                                                    
+     } else {
+         return 'You win'
+     }
+}
+
+function game() {
+    for(i=0; i<5; i++) {
+let input= prompt("input either rock, paper, scissors?")
+if (input == '') {
+    console.log('you can not input empty')
+    return
+    }
+     console.log(playRound(input, computerPlay()))
+    }
+}
+
+game();
+        </script>
+</html>
